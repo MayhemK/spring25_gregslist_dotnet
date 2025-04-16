@@ -30,6 +30,21 @@ CREATE TABLE cars(
   FOREIGN KEY (creator_id) REFERENCES accounts(id) ON DELETE CASCADE
 );
 
+CREATE TABLE houses(
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  bedrooms TINYTEXT NOT NULL,
+  bathrooms TINYTEXT NOT NULL,
+  levels TINYTEXT NOT NULL,
+  year INT UNSIGNED NOT NULL,
+  price MEDIUMINT UNSIGNED NOT NULL,
+  description TEXT NOT NULL,
+  img_url TEXT NOT NULL,
+  creator_id VARCHAR(255) NOT NULL,
+  FOREIGN KEY (creator_id) REFERENCES accounts(id) ON DELETE CASCADE
+)
+
 INSERT INTO 
 cars (make, model, year, price, color, mileage, engine_type, img_url, has_clean_title, creator_id)
 VALUES ('honda', 's2000', 2008, 20000, 'silver', 200000, 'medium', 'https://images.unsplash.com/photo-1723407338018-709fbf9ed494?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHMyMDAwfGVufDB8fDB8fHww', false, '670ff93326693293c631476f');
