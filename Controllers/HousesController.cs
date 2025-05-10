@@ -13,5 +13,17 @@ public class HousesController : ControllerBase
   private readonly HousesService _housesService;
   private readonly Auth0Provider _auth0Provider;
 
-
+  [HttpGet]
+  public ActionResult<List<House>> GetAllHouses()
+  {
+    try
+    {
+      List<House> houses = _housesService.GetHouses();
+      return Ok(houses);
+    }
+    catch (Exception exception)
+    {
+      return BadRequest(exception.Message);
+    }
+  }
 }

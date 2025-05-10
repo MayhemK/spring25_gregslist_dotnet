@@ -1,3 +1,4 @@
+
 namespace gregslist_dotnet.Services;
 
 public class HousesService
@@ -8,5 +9,8 @@ public class HousesService
   }
   private readonly HousesRepository _housesRepository;
 
-
+  internal List<House> GetHouses()
+  {
+    throw new NotImplementedException();
+  }
 }
