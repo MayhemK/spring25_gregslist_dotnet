@@ -11,6 +11,7 @@ public class HousesService
 
   internal List<House> GetHouses()
   {
-    throw new NotImplementedException();
+    List<House> houses = _housesRepository.GetHouses();
+    return houses;
   }
 }
