@@ -27,4 +27,10 @@ public class HousesService
 
     return house;
   }
+
+  internal House CreateHouse(House houseData)
+  {
+    House house = _housesRepository.CreateHouse(houseData);
+    return house;
+  }
 }
