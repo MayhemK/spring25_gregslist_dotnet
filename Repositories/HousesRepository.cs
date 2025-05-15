@@ -1,5 +1,6 @@
 
 
+
 namespace gregslist.Repositories;
 
 public class HousesRepository
@@ -65,5 +66,26 @@ public class HousesRepository
       return house;
     }, houseData).SingleOrDefault();
     return createdHouse;
+  }
+
+  internal void UpdateHouse(House house)
+  {
+    string sql = @"
+    UPDATE houses
+    SET
+    bedrooms = @Bedrooms,
+    bathrooms = @Bathrooms,
+    levels = @Levels,
+    price = @Price,
+    description = @Description,
+    img_url = @ImgUrl
+    WHERE id = @Id
+    LIMIT 1;";
+
+    int rowsAffected = _db.Execute(sql, house);
+    if (rowsAffected > 1)
+    {
+      throw new Exception(rowsAffected + " rows were updated, ERROR!");
+    }
   }
 }

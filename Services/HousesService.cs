@@ -33,4 +33,23 @@ public class HousesService
     House house = _housesRepository.CreateHouse(houseData);
     return house;
   }
+
+  internal House UpdateHouse(int houseId, House houseUpdateData, Account userInfo)
+  {
+    House house = GetHouseById(houseId);
+    if (house.CreatorId != userInfo.Id)
+    {
+      throw new Exception("You are not allowed to update someone else's house!");
+    }
+
+    house.Bedrooms = houseUpdateData.Bedrooms ?? house.Bedrooms;
+    house.Bathrooms = houseUpdateData.Bathrooms ?? house.Bathrooms;
+    house.Levels = houseUpdateData.Levels ?? house.Levels;
+    house.Price = houseUpdateData.Price ?? house.Price;
+    house.Description = houseUpdateData.Description ?? house.Description;
+    house.ImgUrl = houseUpdateData.ImgUrl ?? house.ImgUrl;
+
+    _housesRepository.UpdateHouse(house);
+    return house;
+  }
 }

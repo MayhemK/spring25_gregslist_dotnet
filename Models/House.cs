@@ -9,7 +9,7 @@ public class House
   public string Bathrooms { get; set; }
   public string Levels { get; set; }
   public int Year { get; set; }
-  public int Price { get; set; }
+  public int? Price { get; set; }
   public string Description { get; set; }
   public string ImgUrl { get; set; }
   public string CreatorId { get; set; }
