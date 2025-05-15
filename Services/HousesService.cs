@@ -52,4 +52,15 @@ public class HousesService
     _housesRepository.UpdateHouse(house);
     return house;
   }
+
+  internal string DeleteHouse(int houseId, Account userInfo)
+  {
+    House house = GetHouseById(houseId);
+    if (house.CreatorId != userInfo.Id)
+    {
+      throw new Exception("You are not allowed to delete this House!");
+    }
+    _housesRepository.DeleteHouse(houseId);
+    return "Your House has been deleted!";
+  }
 }

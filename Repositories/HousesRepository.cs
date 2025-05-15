@@ -88,4 +88,15 @@ public class HousesRepository
       throw new Exception(rowsAffected + " rows were updated, ERROR!");
     }
   }
+
+  internal void DeleteHouse(int houseId)
+  {
+    string sql = "DELETE FROM houses WHERE id = @houseId LIMIT 1;";
+
+    int rowsAffected = _db.Execute(sql, new { houseId });
+    if (rowsAffected > 1)
+    {
+      throw new Exception(rowsAffected + " rows were deleted, ERROR!");
+    }
+  }
 }
